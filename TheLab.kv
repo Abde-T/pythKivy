@@ -1,7 +1,40 @@
-BoxLayoutExample:
+GridLayoutExample:
+
+<GridLayoutExample>:    # could use this in order to not write class in python file
+    # rows
+    # cols
+    cols:2
+    Button: 
+            text: 'A'
+    Button: 
+            text: 'B'
+    Button: 
+            text: 'C'
+    Button: 
+            text: 'D'
+    Button: 
+            text: 'E'
+    Button: 
+            text: 'F'
+       
+
+<AnchorLayoutExample>:
+    # right, left, center
+    anchor_x: 'right'
+    # bottom, top, center
+    anchor_y: 'top'
+
+    BoxLayout:
+        size_hint: .1, .1
+        Button: 
+            text: 'A'
+        Button: 
+            text: 'B'
+       
+
 
 <BoxLayoutExample>:
-    orientation: 'vertical'
+    orientation: 'horizontal'
     Button:
         text:"A"
         size_hint: .5, .5
@@ -16,10 +49,20 @@ BoxLayoutExample:
        # width: "100dp"
        # height: "20dp"     #comment
 
-    Button:
-        text:"B"
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: '10dp'
+        Button:
+            text:"B1"
+        Button:
+            text:"B2"
+        Button:
+            text:"B3"
+        Button:
+            text:"B4"
     Button:
         text:"C"
+
 
 <MainWidget>:
     Button:

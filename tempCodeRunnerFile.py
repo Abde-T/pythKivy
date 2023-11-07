@@ -1,1 +1,2 @@
-BoxLayoutExample
+class GridLayoutExample(GridLayout):
+    pass
