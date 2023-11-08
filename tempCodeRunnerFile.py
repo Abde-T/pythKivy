@@ -1,2 +1,1 @@
-class GridLayoutExample(GridLayout):
-    pass
+stacklayout
