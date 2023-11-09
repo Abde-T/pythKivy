@@ -1,1 +1,1 @@
-stacklayout
+            widget.background_color = [1,0,0]
