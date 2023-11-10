@@ -53,6 +53,8 @@ class TheLabApp(App):
 
 class WidgetsExample(GridLayout):
     my_text = StringProperty('1')
+    text_input_str = StringProperty('fuck')
+    # slider_value_txt = StringProperty('50')
     count = 1
     count_enabled = BooleanProperty(False)
     def on_button_click(self):
@@ -72,7 +74,16 @@ class WidgetsExample(GridLayout):
             self.count_enabled = True
     
     def on_switch_active(self, widget):
-        print(str(widget.active)) 
+        print("toggle state" + str(widget.active))
+        # print(str(widget.active)) 
+        
+    
+    def on_slider_value(self, widget):
+        self.slider_value_txt = str(int(widget.value))
+
+
+    def on_text_validate(self, widget):
+        self.text_input_str = widget.text
 
 
 class WidgetsApp(App):
