@@ -1,1 +1,1 @@
-CanvasExample5App
+Widget

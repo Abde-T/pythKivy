@@ -10,6 +10,7 @@ from kivy.properties import StringProperty
 from kivy.properties import BooleanProperty
 from kivy.graphics.vertex_instructions import Line, Rectangle, Ellipse
 from kivy.graphics.context_instructions import Color
+from kivy.properties import Clock
 
 
 class StackLayoutExample(StackLayout):
@@ -106,13 +107,19 @@ class CanvasExample3(Widget):
 class CanvasExample4(Widget):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.ball_size = dp(50)
+        self.vx = dp(3)
+        self.vy = dp(4)
         with self.canvas:
             Line(points=(100,100, 400,500), width=2)
             Color(0,1,0)
             Line(circle=(400,200, 50), width=2)
             Line(rectangle=(400,400, 50,50), width=2)
             self.rect = Rectangle(pos=(500,200), size=(150,100))
-    
+            self.ball = Ellipse(pos=self.center, size=(self.ball_size, self.ball_size))
+        Clock.schedule_interval(self.update, 1/60)
+
+
     def on_button_click(self):
         x,y = self.rect.pos
         w,h = self.rect.size
@@ -125,12 +132,30 @@ class CanvasExample4(Widget):
         x += inc
         self.rect.pos = (x, y)
 
-class CanvasExample5(Widget):
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.ball_size = dp(50)
-        with self.canvas:
-            Ellipse(pos=(self.center,100), size=(self.ball_size, self.ball_size))
+    def on_size(self, *args):
+        self.ball.pos = (self.center_x-  self.ball_size/2, self.center_y - self.ball_size/2)
+
+    def update(self, dt):
+        x,y = self.ball.pos
+        w,h = self.ball.size
+ 
+        x+=self.vx
+        y+=self.vy
+
+        if y + self.ball_size>self.height:
+            y=self.height-self.ball_size
+            self.vy = -self.vy
+        if x + self.ball_size>self.width:
+            x=self.width-self.ball_size
+            self.vx = -self.vx
+        if y<0:
+            y=0
+            self.vy = -self.vy
+        if x <0:
+            x=0
+            self.vx = -self.vx
+
+        self.ball.pos = (x, y)
 
 
 class CanvasApp(App):
@@ -144,7 +169,11 @@ class CanvasExample4App(App):
 # CanvasExample4App().run()
 
 
-class CanvasExample5App(App):
+
+class CanvasExample6(Widget):
     pass
 
-CanvasExample5App().run()
+class CanvasExample6App(App):
+    pass
+
+CanvasExample6App().run()
