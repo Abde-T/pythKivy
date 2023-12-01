@@ -1,0 +1,37 @@
+#:kivy 2.2.1
+
+<MyGridLayout>:
+    name:name
+    lastname:lastname
+    wish:wish
+
+    GridLayout:
+        cols:1
+        size: root.width, root.height
+
+        GridLayout:
+            cols:2
+
+            Label:
+                text:'Name'
+            TextInput:
+                id:name
+                multiline:False
+                background_color: (1,0,1,1)
+            Label:
+                text:'last-Name'
+            TextInput:
+                id:lastname
+                multiline:False
+            Label:
+                text:'wish'
+            TextInput:
+                id:wish
+                multiline:False 
+        
+        Button:
+            text:'submit'
+            font_size: 30
+            on_press: root.press()
+            background_normal:''
+            background_color: (0,0,1,1)
