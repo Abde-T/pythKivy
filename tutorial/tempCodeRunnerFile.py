@@ -1,1 +1,1 @@
-MyGridLayout
+BoxLayout
