@@ -29,9 +29,10 @@
         Image:
             source:'images/cake.jpg'
             allow_stretch:True
-            keep_ratio: false
+            keep_ratio:False
 
         Label:
+            id:name_label
             text:'Name'
             background_color:(.5,.7,.8, 1)
             canvas.before:
@@ -48,9 +49,11 @@
             outline_width: 4
 
         TextInput:
+            id:name_input
             multiline: False
         Button:
             text:'submit'
+            on_press: root.submit()
         Button:
             text:'clear'
             background_color:(1,0,0)
